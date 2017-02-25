@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+
+<!-- Author:  Kyle Reed, kallanreed@outlook.com -->
+<!-- Version: 1.0 -->
+<!-- Cosmos Scope Syntax -->
+
+<dict>
+	<key>uuid</key>
+	<string>895386ab-f542-4319-b7b0-da7224175c03</string>
+	<key>name</key>
+	<string>Scope</string>
+	<key>scopeName</key>
+	<string>source.scope</string>
+	<key>fileTypes</key>
+	<array>
+		<string>script</string>
+	</array>
+	<key>patterns</key>
+	<array>
+
+		<!-- Comments -->
+		<dict>
+			<key>comment</key>
+			<string>Line comment</string>
+			<key>name</key>
+			<string>comment.line.scope</string>
+			<key>match</key>
+			<string>\/\/.*$</string>
+		</dict>
+		
+		<dict>
+			<key>comment</key>
+			<string>Block comment</string>
+			<key>name</key>
+			<string>comment.block.scope</string>
+			<key>begin</key>
+			<string>\/\*</string>
+			<key>end</key>
+			<string>\*\/</string>
+		</dict>
+
+		<!-- Variables -->
+		<dict>
+			<key>include</key>
+			<string>#paramVariable</string>
+		</dict>
+
+		<dict>
+			<key>include</key>
+			<string>#variable</string>
+		</dict>
+
+		<!-- Preprocessor -->
+		<dict>
+			<key>comment</key>
+			<string>Preprocessor directives</string>
+			<key>name</key>
+			<string>support.other.scope</string>
+			<key>match</key>
+			<string>#(DECLARE|SET|IF|ELSEIF|ELSE|ENDIF)</string>
+		</dict>
+
+		<!-- Rowset keywords -->
+		<dict>
+			<key>comment</key>
+			<string>Module keywords</string>
+			<key>name</key>
+			<string>keyword.operator.scope</string>
+			<key>match</key>
+			<string>(DEFINE (MODULE|VIEW|FUNC))|(END (MODULE|VIEW|FUNC))</string>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>Join keywords</string>
+			<key>name</key>
+			<string>keyword.operator.scope</string>
+			<key>match</key>
+			<string>(INNER|LEFT|OUTER|LEFT OUTER|FULL OUTER|RIGHT|RIGHT OUTER) JOIN</string>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>Cross keywords</string>
+			<key>name</key>
+			<string>keyword.operator.scope</string>
+			<key>match</key>
+			<string>CROSS (JOIN|APPLY)</string>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>All keywords</string>
+			<key>name</key>
+			<string>keyword.operator.scope</string>
+			<key>match</key>
+			<string>(UNION|EXCEPT) ALL</string>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>Agg By keywords</string>
+			<key>name</key>
+			<string>keyword.operator.scope</string>
+			<key>match</key>
+			<string>(GROUP|ORDER|PARTITION|CLUSTERED|SORTED) BY</string>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>With keywords</string>
+			<key>name</key>
+			<string>keyword.operator.scope</string>
+			<key>match</key>
+			<string>WITH (STREAMEXPIRY|COLUMNGROUPS)</string>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>Keywords</string>
+			<key>name</key>
+			<string>keyword.operator.scope</string>
+			<key>match</key>
+			<string>\_\_serialnum|\_\_date|\_\_hour|\_\_datetime</string>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>Stream selection</string>
+			<key>name</key>
+			<string>keyword.operator.scope</string>
+			<key>match</key>
+			<string>\b(SSTREAM|EXTRACT|SELECT|FROM|WHERE|HAVING|SPARSE STREAMSET|RETURN ROWSET|AS|TO|OUTPUT|ON|MODULE|REFERENCE|RESOURCE|USING|COMBINE|EXTRACT|JOIN|LIST|PROCESS|PRODUCE|REDUCE|ASC|DESC|DISTINCT|OVER|PRESORT|RANK|ROWCOUNT|LOWDISTINCTNESS|TO|TOP|UNION|EXCEPT|BEGIN|ROWSET|STREAMSET|RANGE|PATTERN)\b</string>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>Column aggregates</string>
+			<key>name</key>
+			<string>keyword.operator.scope</string>
+			<key>match</key>	
+			<string>AVG|COUNT|FIRST|LAST|MAX|MIN|SUM|ROW_NUMBER</string>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>Scope operators</string>
+			<key>name</key>
+			<string>keyword.operator.scope</string>
+			<key>match</key>	
+			<string>AND|NOT|OR|ANY|ALL|IF|REGEX</string>
+		</dict>
+
+		<!-- Strings -->
+		<dict>
+			<key>comment</key>
+			<string>Double quoted strings</string>
+			<key>name</key>
+			<string>string.quoted.double.scope</string>
+			<key>begin</key>
+			<string>@?"</string>
+			<key>end</key>
+			<string>"</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#paramVariable</string>
+				</dict>
+			</array>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>Single quoted strings</string>
+			<key>name</key>
+			<string>string.quoted.single.scope</string>
+			<key>begin</key>
+			<string>'</string>
+			<key>end</key>
+			<string>'</string>
+		</dict>
+
+		<!-- Constants -->
+		<dict>
+			<key>comment</key>
+			<string>Numeric literals</string>
+			<key>include</key>
+			<string>#floatLiteral</string>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>Numeric literals</string>
+			<key>include</key>
+			<string>#intLiteral</string>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>Language literals</string>
+			<key>name</key>
+			<string>constant.language.scope</string>
+			<key>match</key>
+			<string>true|false|null</string>
+		</dict>
+
+		<!-- Types -->
+		<dict>
+			<key>comment</key>
+			<string>Variable types</string>
+			<key>name</key>
+			<string>storage.type.scope</string>
+			<key>match</key>
+			<string>\b(string|int|DateTime|long|double|float|bool)\b</string>
+		</dict>
+
+		<!-- CS Blocks -->
+		<dict>
+			<key>comment</key>
+			<string>Embedded C#</string>
+			<key>name</key>
+			<string>support.other.scope</string>
+			<key>contentName</key>
+			<string>source.cs</string>
+			<key>begin</key>
+			<string>#CS</string>
+			<key>end</key>
+			<string>#ENDCS</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.cs</string>
+				</dict>
+			</array>
+		</dict>
+
+	</array>
+	<key>repository</key>
+	<dict>
+		<key>intLiteral</key>
+		<dict>
+			<key>match</key>
+			<string>(?:^|[^\w])(\d+([Uu][Ll]|[Ll]|[Uu])?)</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.scope</string>
+				</dict>
+			</dict>
+		</dict>
+
+		<key>floatLiteral</key>
+		<dict>
+			<key>match</key>
+			<string>(?:^|[^\w])(\d*\.\d+([Dd]|[Ff]|[Mm])?)</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.scope</string>
+				</dict>
+			</dict>
+		</dict>
+
+		<key>paramVariable</key>
+		<dict>
+			<key>name</key>
+			<string>variable.parameter.scope</string>
+			<key>match</key>
+			<string>@@\w+@@</string>
+		</dict>
+
+		<key>variable</key>
+		<dict>
+			<key>name</key>
+			<string>variable.other.scope</string>
+			<key>match</key>
+			<string>@\w+\b</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
